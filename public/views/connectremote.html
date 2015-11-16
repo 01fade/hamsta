@@ -1,0 +1,12 @@
+<div class="page" id="connectremote">
+	<img src="img/logo2.png" alt="" style="width: 80vw; margin-bottom: 40px;">
+    <!-- http://danielfriesen.name/blog/2013/09/19/input-type-number-and-ios-numeric-keypad/ -->
+	<p>Enter the 4 digit code.</p>
+	<form name="keyForm">
+	<input ng-model="matchKey" type="number" name="key" ng-minlength="4" ng-maxlength="4" inputmode="numeric" pattern="[0-9]*" title="keycode" required>
+	<!-- needs ngAnimate (angular-animate.js) -->
+    <button id="go" ng-disabled="keyForm.$invalid" class="animate-hide" ng-hide="keyForm.key.$invalid" ng-click="keyToSend()">Go</button>
+    </form>
+    <p>Don't have a code? Go to <span style="padding-bottom: 1vw; border-bottom: 0.5vw solid #fff">my.hamsta.us</span> on your computer.</p>
+    <div id="what"><a href="http://hamsta.us">Wait, what is this?</a></div>
+</div>
