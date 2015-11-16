@@ -2,14 +2,14 @@ var angular = angular || {};
 
 angular.module('app.services', [])
 .factory('ParseService', function() {
-  var UserObject = Parse.Object.extend("testtesttest");
+  //class name is youtube
+  var UserObject = Parse.Object.extend("youtube");
   var userObject = new UserObject();
   var query = new Parse.Query(UserObject);
   var service = {};
 
   //get method
   service.getData = function(callback) {
-    // query.equalTo("first_name", "Hello");
     query.find({
       success: function(res) {
           callback(res);

@@ -30,12 +30,12 @@ angular.module('myApp', ['ui.router',
     $rootScope.cartarray = [];
 
     //parse app key, js key
-    Parse.initialize("APPKEY", "JSKEY");
+    Parse.initialize("MdRE1kDbDdzLGlnL58RylsrgHedWuyt5havoBScC", "oIeP9WumrqoPgFV5StUEfIK58xbQOtUgFf6e7RPk");
 
   })
   //options of each services, chained to .run
   //no angular services in there
   .config(function($socketProvider){
-    //Server:Port e.g. "http://192.168.1.31:3000"
+    //Server:Port (server side app.js) e.g. "http://192.168.1.31:3000"
     $socketProvider.setConnectionUrl('SERVER:PORT');
   });

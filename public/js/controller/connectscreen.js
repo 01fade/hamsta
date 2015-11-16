@@ -117,13 +117,6 @@ angular.module('app.controller.connectscreen', [])
 		getDataFromYT(function(data){
 			console.log(data[0].attributes);
 			for (i=0;i<data.length;i++) {
-				//
-				//
-				//
-				// CHANGE heartstest to hearts for real data
-				//
-				//
-				//
 				processData(data[i].attributes.hearts, data[i].attributes.duration, i, function(cbdata) {
 					// console.dir(cbdata);
 					$rootScope.heartsArray.push(cbdata);
