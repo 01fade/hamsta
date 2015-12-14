@@ -15,6 +15,7 @@ angular.module('app.controller.remotecontrol', [])
     $scope.content = [];
     $scope.empty = true;
    	var index = 0;
+   	var ua = navigator.userAgent.toLowerCase();
 	$scope.activechannel = 1;
 
      $scope.gettotal = function () {
@@ -93,9 +94,11 @@ angular.module('app.controller.remotecontrol', [])
 		if(index == 0) {index++; $("#next").fadeIn(); $("#intro").fadeOut(); }
 		else if(index == 1) {index++; $("#prev").fadeIn(); $("#next").fadeOut(); }
 		else if(index == 2) {index++; $("#up").fadeIn(); $("#prev").fadeOut(); }
-		else if(index == 3) {index++; $("#down").fadeIn(); $("#up").fadeOut(); }
+		else if(index == 3) {index++; $("#down").fadeIn(); $("#up").fadeOut()
+			if (ua.indexOf("android") > -1)	{alert("To decrease the volume, please disable pull-down-to-refresh feature in your Chrome browser");};
+		}
 		else if(index == 4) {index++; $("#heart").fadeIn(); $("#down").fadeOut(); }
-		else if(index == 5) {index++; $("#end").fadeIn(); $("#heart").fadeOut(); }
+		else if(index == 5) {index++; $("#end").fadeIn(); $("#heart").fadeOut(); };
 		// else if(index == 5) {index = 0; $("#next").fadeIn(); $("#end").fadeOut(); };
 	};
 
@@ -108,7 +111,9 @@ angular.module('app.controller.remotecontrol', [])
 		else if(index == 2) {index--; $("#next").fadeIn(); $("#prev").fadeOut(); }
 		else if(index == 3) {index--; $("#prev").fadeIn(); $("#up").fadeOut(); }
 		else if(index == 4) {index--; $("#up").fadeIn(); $("#down").fadeOut(); }
-		else if(index == 5) {index--; $("#down").fadeIn(); $("#heart").fadeOut(); }
+		else if(index == 5) {index--; $("#down").fadeIn(); $("#heart").fadeOut()
+			if (ua.indexOf("android") > -1)	{alert("To decrease the volume, please disable pull-down-to-refresh feature in your Chrome browser");};
+		}
 		else if(index == 6) {index--; $("#heart").fadeIn(); $("#end").fadeOut();};
 	};
 
