@@ -1,6 +1,7 @@
 <div class="page" id="remotecontrol">
 	<div id="help" mn-touch swipe-left="next()" mn-touch secure-tap="next()" mn-touch swipe-right="prev()">
-		<div id="next"><img src="img/next.jpg" alt=""></div>
+		<div id="intro"><img src="img/intro.jpg" alt=""></div>
+		<div style="display:none;" id="next"><img src="img/next.jpg" alt=""></div>
 		<div style="display:none;" id="prev"><img src="img/prev.jpg" alt=""></div>
 		<div style="display:none;" id="up"><img src="img/up.jpg" alt=""></div>
 		<div style="display:none;" id="down"><img src="img/down.jpg" alt=""></div>
@@ -32,7 +33,7 @@
 	mn-touch swipe-down="down()"
 	mn-touch swipe-right="plus()"
 	mn-touch secure-tap="heart($event)">
-	<p style="font-size: 8vw;">Swipe in any direction<br>or tap.</p>
+	<p style="font-size: 8vw;">Swipe or tap<br>in this area.</p>
 	</div>
 	<div id="navigation">
 		<div class="inactive" id="turnofficon" ng-click="turnoff()"><img src="img/turnoff.png" alt="turnoff"></div>

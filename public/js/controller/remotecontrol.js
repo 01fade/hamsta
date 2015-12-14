@@ -1,11 +1,11 @@
 var angular = angular || {};
 
 angular.module('app.controller.remotecontrol', [])
-.controller('RemoteControlCtrl', ["$scope", "$rootScope", "$location", "$socket", "$state", "ParseService", "$interval", 
+.controller('RemoteControlCtrl', ["$scope", "$rootScope", "$location", "$socket", "$state", "ParseService", "$interval",
 	function($scope, $rootScope, $location, $socket, $state, ParseService, $interval) {
 	console.log("RemoteControlCtrl.");
     $rootScope.title = $location.url();
-	
+
 	//comment out for testing
     if($rootScope.partner == undefined) {$state.transitionTo('Start');};
 
@@ -23,7 +23,7 @@ angular.module('app.controller.remotecontrol', [])
 	    	if ( $scope.content[i].price == " (Signup)") {
 	    		$scope.total = $scope.total;
 	    	} else {
-			    $scope.total = $scope.total + $scope.content[i].price;	    		
+			    $scope.total = $scope.total + $scope.content[i].price;
 	    	}
 		    console.log($scope.content[i].price);
 	    };
@@ -69,7 +69,7 @@ angular.module('app.controller.remotecontrol', [])
 		$("#toucharea").show();
 		$("#cartcontents").hide();
 		$("#help").hide();
- 		$("#viewcarticon").css("background-color", "#e52d27")
+ 		$("#viewcarticon").css("background-color", "#ccc");
 
 		$("#tvicon").removeClass("inactive");
 		$("#helpicon").addClass("inactive");
@@ -81,33 +81,35 @@ angular.module('app.controller.remotecontrol', [])
         $socket.emit('remote view cart', { "partner": $rootScope.partner });
 		$("#toucharea").hide();
  		$("#cartcontents").show();
- 		$("#viewcarticon").css("background-color", "#000")
+ 		$("#viewcarticon").css("background-color", "#000");
 
 		$("#tvicon").addClass("inactive");
 		$("#helpicon").addClass("inactive");
 		$("#moreicon").addClass("inactive");
 	};
 
-	$scope.next = function () { 
+	$scope.next = function () {
 		console.log(index);
-		if(index == 0) {index++; $("#prev").fadeIn(); $("#next").fadeOut(); }
-		else if(index == 1) {index++; $("#up").fadeIn(); $("#prev").fadeOut(); }
-		else if(index == 2) {index++; $("#down").fadeIn(); $("#up").fadeOut(); }
-		else if(index == 3) {index++; $("#heart").fadeIn(); $("#down").fadeOut(); }
-		else if(index == 4) {index++; $("#end").fadeIn(); $("#heart").fadeOut(); }
+		if(index == 0) {index++; $("#next").fadeIn(); $("#intro").fadeOut(); }
+		else if(index == 1) {index++; $("#prev").fadeIn(); $("#next").fadeOut(); }
+		else if(index == 2) {index++; $("#up").fadeIn(); $("#prev").fadeOut(); }
+		else if(index == 3) {index++; $("#down").fadeIn(); $("#up").fadeOut(); }
+		else if(index == 4) {index++; $("#heart").fadeIn(); $("#down").fadeOut(); }
+		else if(index == 5) {index++; $("#end").fadeIn(); $("#heart").fadeOut(); }
 		// else if(index == 5) {index = 0; $("#next").fadeIn(); $("#end").fadeOut(); };
 	};
 
-	$scope.prev = function () { 
+	$scope.prev = function () {
 		console.log(index);
 		if(index == 0) {
 			// index = 0; $("#end").fadeIn(); $("#next").fadeOut();
 		}
-		else if(index == 1) {index--; $("#next").fadeIn(); $("#prev").fadeOut(); }
-		else if(index == 2) {index--; $("#prev").fadeIn(); $("#up").fadeOut(); }
-		else if(index == 3) {index--; $("#up").fadeIn(); $("#down").fadeOut(); }
-		else if(index == 4) {index--; $("#down").fadeIn(); $("#heart").fadeOut(); }
-		else if(index == 5) {index--; $("#heart").fadeIn(); $("#end").fadeOut();};
+		else if(index == 1) {index--; $("#intro").fadeIn(); $("#next").fadeOut(); }
+		else if(index == 2) {index--; $("#next").fadeIn(); $("#prev").fadeOut(); }
+		else if(index == 3) {index--; $("#prev").fadeIn(); $("#up").fadeOut(); }
+		else if(index == 4) {index--; $("#up").fadeIn(); $("#down").fadeOut(); }
+		else if(index == 5) {index--; $("#down").fadeIn(); $("#heart").fadeOut(); }
+		else if(index == 6) {index--; $("#heart").fadeIn(); $("#end").fadeOut();};
 	};
 
 	$scope.help = function(){
@@ -116,13 +118,13 @@ angular.module('app.controller.remotecontrol', [])
 		$("#help").show();
 		$("#toucharea").hide();
 		$("#cartcontents").hide();
- 		$("#viewcarticon").css("background-color", "#e52d27");
+ 		$("#viewcarticon").css("background-color", "#ccc");
 		$("#tvicon").addClass("inactive");
 		$("#helpicon").removeClass("inactive");
 		$("#moreicon").addClass("inactive");
 
 		//make sure
-		$("#next").show();
+		$("#intro").show();
 		$("#end").hide();
 		index = 0;
 	};
@@ -133,7 +135,7 @@ angular.module('app.controller.remotecontrol', [])
 		$("#toucharea").hide();
 		$("#cartcontents").hide();
 		$("#help").hide();
- 		$("#viewcarticon").css("background-color", "#e52d27")
+ 		$("#viewcarticon").css("background-color", "#ccc");
 
 		$("#tvicon").addClass("inactive");
 		$("#helpicon").addClass("inactive");

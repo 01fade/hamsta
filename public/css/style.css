@@ -42,6 +42,11 @@ body{
 	-webkit-transition: 1s;
 }
 
+#connectscreen span {
+	font-style: italic;
+	border-bottom: 2px solid #fff;
+}
+
 #connectscreen h1:hover {
 	background-color: #e52d27;
 }
@@ -438,15 +443,16 @@ iframe {
 	text-align: center;
  }
 
-/****************** REMOTE CONTROLE *********************/
+/****************** REMOTE CONTROL *********************/
 
 #toucharea {
 	z-index: 10;
 	position: absolute;
 	top: 0;
-	height: 88vh;
-	width: 100vw;
+	height: 86vh;
+	width: calc(100vw - 2vh);
 	margin: 0;
+	border: 1vh solid #444;
 	-webkit-transition: 0.5s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
 	-moz-transition: 0.5s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
 	-ms-transition: 0.5s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
@@ -459,14 +465,12 @@ iframe {
 	z-index: 20;
 	position: absolute;
 	top: 0;
-	bottom: 12vh;
-	height: 88vh;
+	height: 87vh;
 	width: 100vw;
-	padding-bottom: 20vh;
 	margin: 0;
 	color: #000;
 	font-size: 8vw;
-	background-color: #f8f8f8;
+	background-color: #eee;
 	overflow: scroll;
 }
 
@@ -517,7 +521,7 @@ iframe {
 	margin: 0;
 }*/
 
-#prev, #next, #up, #down, #heart, #end {
+#intro, #prev, #next, #up, #down, #heart, #end {
 	z-index: 20;
 	position: fixed;
 	top: 0;
@@ -542,7 +546,7 @@ iframe {
 
 #morelinks {
 	z-index: 20;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	height: 88vh;
 	width: 100vw;
@@ -564,10 +568,10 @@ iframe {
 	z-index: 100;
 	position: fixed;
 	bottom: 0;
+	border-top: 1vh solid #444;
 	height: 12vh;
 	width: 100vw;
 	margin: 0;
-	border-top: 1vh solid #000;
 	display: block;
 	background-color: #fff;
 }
@@ -617,7 +621,7 @@ iframe {
 #viewcarticon {
 	width: 30vw !important;
 	height: 26vw !important;
-	background-color: #e52d27;
+	background-color: #ccc;
 	border-radius: 4vw 4vw 0 0;
 	position: absolute;
 	bottom: -1vw;
@@ -820,7 +824,3 @@ progress-bar {
 	z-index: 101;
 	bottom: 0;
 }
-
-
-
-

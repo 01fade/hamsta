@@ -1,8 +1,8 @@
 var angular = angular || {};
 
-// Main JavaScript file
-// Init Angular world by linking to 'myApp' namespace declared in <body>
-// in [ ], add any dependencies used for the project
+// Our main JavaScript file
+// Init Angular world by linking to 'myApp' namespace we declared in <body>
+// in [ ], we add any dependencies used for the project
 // `ui.router` is reserved by ui.router library
 
 angular.module('myApp', ['ui.router',
@@ -29,13 +29,16 @@ angular.module('myApp', ['ui.router',
     //start with empty cart
     $rootScope.cartarray = [];
 
-    //parse app key, js key
+    //app key, js key
     Parse.initialize("MdRE1kDbDdzLGlnL58RylsrgHedWuyt5havoBScC", "oIeP9WumrqoPgFV5StUEfIK58xbQOtUgFf6e7RPk");
 
   })
   //options of each services, chained to .run
   //no angular services in there
   .config(function($socketProvider){
-    //Server:Port (server side app.js) e.g. "http://192.168.1.31:3000"
-    $socketProvider.setConnectionUrl('SERVER:PORT');
+    //IMPORTANT CHANGE WHEN MOVING TO DIFFERENT SERVER
+    $socketProvider.setConnectionUrl('http://my.hamsta.us');
+    // $socketProvider.setConnectionUrl('http://192.168.1.31:3000');
+    // $socketProvider.setConnectionUrl('http://10.0.1.19:3000');
+    // $socketProvider.setConnectionUrl('http://149.31.134.39:3000');
   });

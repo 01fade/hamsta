@@ -38,6 +38,11 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('matchKey', function (data, callback){
+        //
+        // Need to fix here, seems like the key is right on screen and remote
+        // but comparison here results in wrong
+        // maybe implement user rooms, where partners join...
+        //
         console.log("matchKey data; " + data);
         var sent = 0;
         for (var i = users.length - 1; i >= 0; i--) {

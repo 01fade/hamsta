@@ -3,7 +3,7 @@
     <!-- http://danielfriesen.name/blog/2013/09/19/input-type-number-and-ios-numeric-keypad/ -->
 	<p>Enter the 4 digit code.</p>
 	<form name="keyForm">
-	<input ng-model="matchKey" type="number" name="key" ng-minlength="4" ng-maxlength="4" inputmode="numeric" pattern="[0-9]*" title="keycode" required>
+	<input id="keyval" ng-model="matchKey" type="number" name="key" ng-minlength="4" ng-maxlength="4" inputmode="numeric" pattern="[0-9]*" title="keycode" required>
 	<!-- needs ngAnimate (angular-animate.js) -->
     <button id="go" ng-disabled="keyForm.$invalid" class="animate-hide" ng-hide="keyForm.key.$invalid" ng-click="keyToSend()">Go</button>
     </form>

@@ -8,34 +8,47 @@ angular.module('app.controller.connectscreen', [])
 	// http://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
     var possible = "0123456789";
 
-	function keykeykey() {
+	function keykeykey( callback ) {
+		$scope.pairKey = "";
 	    //create a unique key and send it to server
 	    for( var i=0; i < 4; i++ ) {
 	        $scope.pairKey += possible.charAt(Math.floor(Math.random() * possible.length));
 	        if ($scope.pairKey.length == 4) {
 			    console.log($scope.pairKey);
+				$scope.$apply();
 			    $socket.emit('pairKey', $scope.pairKey, function(data){
 			    	$rootScope.myId = data;
 			    	console.log($rootScope.myId);
 			    });
 			}
 	    };
+	    if (callback){ callback(); };
 	};
 
-    //if after 3s no key is asigned, get a new key
-	setTimeout(function(){
-		if ($scope.pairKey == "") {
-			keykeykey();
-			console.log("setTimeout kicked in");
-		};
-	}, 5000);
+	function fadeKeyIn(){
+		//when the array is full then fade in the key
+		if ($rootScope.heartsArray.length == 6 && $scope.pairKey !== ""){
+			console.log("fadeKeyIn", $scope.pairKey, $("#key").html());
+			$("#loading").fadeOut( function (){
+				$("#key").fadeIn();
+			});
+		} else {
+			console.log("key is empty, get key");
+			keykeykey(function(){
+				setTimeout(function(){
+					fadeKeyIn();
+				}, 1000);
+			});
+		}
+	}
 
     $socket.on('get key', function(){
     	console.log("server says get key")
     	if( $scope.pairKey == "" ) {
+    		console.log("key is empty, get key");
     		keykeykey();
     	} else {
-		    console.log($scope.pairKey);
+		    console.log("already have key: " + $scope.pairKey);
 		}
     })
 
@@ -117,22 +130,20 @@ angular.module('app.controller.connectscreen', [])
 		getDataFromYT(function(data){
 			console.log(data[0].attributes);
 			for (i=0;i<data.length;i++) {
+				//
+				//
+				//
+				// CHANGE heartstest to hearts for real data
+				//
+				//
+				//
 				processData(data[i].attributes.hearts, data[i].attributes.duration, i, function(cbdata) {
 					// console.dir(cbdata);
 					$rootScope.heartsArray.push(cbdata);
 					// console.log($rootScope.heartsArray);
 				});
 			}
-			//when the array is full then fade in the key
-			if ($rootScope.heartsArray.length == 6 && $scope.pairKey !== ""){
-				$("#loading").fadeOut( function (){
-					$("#key").fadeIn();
-				});
-			} else {
-				$("#loading").delay(3000).fadeOut( function (){
-					$("#key").fadeIn();
-				})
-			}
+			fadeKeyIn();
 		});
 	});
 

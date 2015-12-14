@@ -6,7 +6,8 @@ angular.module('app.controller.connectremote', [])
     $rootScope.title = $location.url();
 
 	$scope.keyToSend = function () {
-		console.log("send key");
+		console.log($("#keyval").val());
+		console.log("send key", $scope.matchKey);
 	    $socket.emit('matchKey', $scope.matchKey, function (data) {
 	        //this is the callback function
 	        console.log(data);
