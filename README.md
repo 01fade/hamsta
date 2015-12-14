@@ -12,6 +12,13 @@ To run change the (local) server address in public > js > app.js
 
 Check the network settings in your system preferences on a Mac to get your local server address. You will have to use address:port on your phone in order to use socket.io and control the screen.
 
+###To Do List
+- minimize errors when trying to start new sessions
+- feedback for items added to the cart
+- improve instructions at beginning or not show at all, but keep accessible
+- mobile version for info page
+
+
 ###More information
 
 [On my portfolio](http://22-8miles.com/hamsta/)
